@@ -46,10 +46,17 @@ if (location === 'NAM') {
      }
     total= itemTotal+shipping //setst the new total
 
-    if (shipping === 0 && customers > 1) 
-        {
-        checkoutMessage.value= FREE_WARNING + currency + total //this sets the warning that the special doesn't apply to more than 1 customer
+    if (shipping === 0 && customers > 1 && location ==='RSA') 
+        { 
+          total =total+400
+          
+         checkoutMessage.value= FREE_WARNING + currency + total
 
+//this sets the warning that the special doesn't apply to more than 1 customer
+
+        }else if(shipping === 0 && customers > 1 && location ==='NAM'){
+          total =total+600
+          checkoutMessage.value= FREE_WARNING + currency + total
         }else{
             checkoutMessage.value=  currency + total //this displays the total
         }
