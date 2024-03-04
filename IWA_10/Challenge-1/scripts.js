@@ -78,7 +78,8 @@ const problemDate = new Date(holidays[0].date)
 
 //created a date called problemDate because holidays[0] wasn't a date
 const firstHolidayTimestamp = Math.min(
-    problemDate.getTime(),
+    /* problemDate.getTime(), */
+    new Date(holidays[0].date).getTime(),
     holidays[1].date.getTime(),
     holidays[2].date.getTime(),
     holidays[3].date.getTime(),
@@ -90,7 +91,7 @@ const firstHolidayTimestamp = Math.min(
 )
 
 const lastHolidayTimestamp = Math.max(
-    problemDate.getTime(),
+  new Date(holidays[0].date).getTime(),
     holidays[1].date.getTime(),
     holidays[2].date.getTime(),
     holidays[3].date.getTime(),
@@ -116,7 +117,7 @@ let lastMonthZero =lastMonth<10 ? "0":""
 console.log(`${firstDayZero}${firstDay}/${firstMonthZero}${firstMonth+1}/${currentYear}`)
 console.log(`${lastDayZero}${lastDay}/${lastMonthZero}${lastMonth+1}/${currentYear}`)
 
-const randomHoliday = new Date(holidays[Math.floor(Math.random() * 8)].date)
+const randomHoliday = new Date(holidays[Math.floor(Math.random() * 9)].date)
 //added the function to randomise between one and eight and to choose from the holiday object
 
 const dayZero =randomHoliday.getDate()<10 ? "0":""
