@@ -24,15 +24,16 @@ let secondIndex= second.length
 let thirdIndex = third.length
 //extractBiggest function compares the first second and third variable at the indexvalue-1 if the number is the biggest it decreases the index value by one and returns the value of that possition in the array.
 const extractBiggest = () => {
-	if (first[firstIndex-1] > second[secondIndex-1]) {
-		firstIndex= firstIndex-1
-    return(first[firstIndex])
-	}else if (second[secondIndex-1] > third[thirdIndex-1]) {
+	if (first[firstIndex-1] > second[secondIndex-1] && first[firstIndex-1] > third[thirdIndex-1]) {
+		 firstIndex= firstIndex-1
+ 
+    return first.pop() 
+	}else if (second[secondIndex-1] > third[thirdIndex-1 ]) {
 		secondIndex= secondIndex-1
-    return(second[secondIndex])
+    return second.pop() 
 	}else{	
     thirdIndex= thirdIndex-1
-    return(third[thirdIndex])
+    return third.pop() 
 }
 
 
