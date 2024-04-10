@@ -1,4 +1,6 @@
-import { TABLES, COLUMNS, state } from "./data.js"
+//views.js
+
+import { TABLES, COLUMNS, state } from './data.js'
 
 /**
  * Takes any order as an object literal (as saved in state) and converts it a
@@ -9,35 +11,37 @@ import { TABLES, COLUMNS, state } from "./data.js"
  * @param {object} order 
  * @returns {HTMLElement}
  */
-export const createOrderHtml = (order) => {
-    const { id, title, table, created } = order
+    export const createOrderHtml = (order) => {
+        const { id, title, table, created } = order;
+    
+        const element = document.createElement('div');
+        element.className = 'order';
+        element.draggable = true; // Set draggable attribute to true
+        element.dataset.id = id;
+    
+        const hours = created.getHours().toString().padStart(2, '0');
+        const minutes = created.getMinutes().toString().padStart(2, '0');
+    
+        element.innerHTML = `
+            <div class="order__title" data-order-title>${title}</div>
+            
+            <dl class="order__details">
+                <div class="order__row">
+                    <dt>Table:</dt>
+                    <dd class="order__value" data-order-table>${table}</dd>
+                </div>
+    
+                <div class="order__row">
+                    <dt>Ordered:</dt>
+                    <dd class="order__value">${hours}:${minutes}</dd>
+                </div>
+            </dl>
+        `;
+    
+      
+        return element;
+    };
 
-    const element = document.createElement('div')
-    element.className = 'order'
-    element.draggable = true
-    element.dataset.id = id
-
-    const hours = created.getHours().toString().padStart(2, '0')
-    const minutes = created.getMinutes().toString().padStart(2, '0')
-
-    element.innerHTML = /* html */ `
-        <div class="order__title" data-order-title>${title}</div>
-        
-        <dl class="order__details">
-            <div class="order__row">
-                <dt>Table:</dt>
-                <dd class="order__value" data-order-table>${table}</dd>
-            </div>
-
-            <div class="order__row">
-                <dt>Ordered:</dt>
-                <dd class="order__value">${hours}:${minutes}</dd>
-            </div>
-        </dl>
-    `
-
-    return element
-}
 
 /**
  * Since the tables in use, and their identification can be configured before
@@ -147,8 +151,8 @@ export const moveToColumn = (id, newColumn) => {
  * Starts the app focused on the "add order" button. This means that users can
  * immediately started adding an order by pressing the enter or spacebar.
  */
-html.other.add.focus({ focusVisible: true })
-console.log(html.other.add)
+html.other.add.focus()
+
 
 html.add.table.appendChild(createTableOptionsHtml())
 html.edit.table.appendChild(createTableOptionsHtml())

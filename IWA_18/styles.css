@@ -149,6 +149,7 @@
     animation-duration: 0.6s;
     animation-name: enter;
     cursor: move;
+    z-index: 10;
   }
   
   .order:hover {
